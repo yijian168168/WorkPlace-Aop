@@ -36,7 +36,7 @@ public class SartTest {
         map3.put("name","xiaoqin");
         map3.put("age","22");
         try {
-            System.out.println(personController.personService3(person3,map3));
+            System.out.println(personController.personService1(person3,map3));
         } catch (Exception e) {
             e.printStackTrace();
         }

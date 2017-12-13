@@ -1,5 +1,7 @@
 package com.aop.controller;
 
+import com.aop.annotations.DataSource;
+import com.aop.annotations.LogPrint;
 import com.aop.dao.Person;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +13,13 @@ import java.util.Map;
 @Service
 public class PersonController {
 
+    @DataSource("dataSourceWrite")
     public String personService1(Person person,Map<String,String> personConfig){
-
         System.out.println("personService1:" + person);
         return "";
     }
 
+    @LogPrint(value = "qingrong")
     public String personService2(Person person,Map<String,String> personConfig){
 
         System.out.println("personService2:" + person);

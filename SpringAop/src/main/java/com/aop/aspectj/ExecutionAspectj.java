@@ -4,6 +4,7 @@ import com.aop.dao.Person;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-public class PersonAspectj {
+public class ExecutionAspectj {
 
 //    @Before("execution(public String com.aop.controller.*.*(..))")
     /*public void beforeMethod(JoinPoint joinPoint){
@@ -35,7 +36,7 @@ public class PersonAspectj {
     }*/
 
 
-    @Around(value = "execution(* com.aop.controller.PersonController.personService3(..))")
+    @Around(value = "personService3()")
     public Object aferThrowing(ProceedingJoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         Person person = (Person) joinPoint.getArgs()[0];
@@ -52,6 +53,9 @@ public class PersonAspectj {
         System.out.println("An exception " + "" + ", has been throwing in " + methodName + "()");
         return "ok";
     }
+
+    @Pointcut(value = "execution(* com.aop.controller.PersonController.personService3(..))")
+    public void personService3(){}
 
 
 }
