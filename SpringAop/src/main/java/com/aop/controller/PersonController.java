@@ -2,6 +2,7 @@ package com.aop.controller;
 
 import com.aop.annotations.DataSource;
 import com.aop.annotations.LogPrint;
+import com.aop.annotations.Valid;
 import com.aop.dao.Person;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,11 @@ public class PersonController {
         System.out.println("personService3:" + person);
         throw new Exception("我是测试");
 //        return "";
+    }
+
+    public String personService4(@Valid Person person, Map<String,String> personConfig) throws Exception {
+
+        System.out.println("personService4:" + person);
+        return "";
     }
 }

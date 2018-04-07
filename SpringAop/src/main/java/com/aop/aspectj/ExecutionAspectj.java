@@ -1,9 +1,11 @@
 package com.aop.aspectj;
 
 import com.aop.dao.Person;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +16,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExecutionAspectj {
 
-//    @Before("execution(public String com.aop.controller.*.*(..))")
-    /*public void beforeMethod(JoinPoint joinPoint){
+    @Before("execution(public String com.aop.controller.*.*(..))")
+    public void beforeMethod(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().getName();
         try {
             Object [] args = joinPoint.getArgs();
-            BeanUtils.copyProperties(args[0],args[1]);
+            for (Object arg : args){
+                if (null != arg){
+                    
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println(methodName + ":" );
-    }*/
+    }
 
     /*@AfterThrowing(pointcut="execution(public String com.aop.controller.PersonController.personService3(..))",throwing="e")
     public String aferThrowing(JoinPoint joinPoint , Exception e){

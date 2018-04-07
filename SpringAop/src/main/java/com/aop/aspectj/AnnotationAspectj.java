@@ -2,6 +2,7 @@ package com.aop.aspectj;
 
 import com.aop.annotations.DataSource;
 import com.aop.annotations.LogPrint;
+import com.aop.annotations.Valid;
 import com.aop.dao.Person;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -40,6 +41,20 @@ public class AnnotationAspectj {
         String methodName = joinPoint.getSignature().getName();
         try {
             System.out.println("获取切面方法 " + methodName + "上注解的值 ： " + dataSource.value());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(methodName + ":");
+    }
+
+    /**
+     * 通过注解做切面，并获取注解内的值
+     * */
+    @Before(value = "@annotation(valid)")
+    public void dataSource(JoinPoint joinPoint, Valid valid) {
+        String methodName = joinPoint.getSignature().getName();
+        try {
+            System.out.println("获取切面方法 " + methodName + "上注解的值 ： ");
         } catch (Exception e) {
             e.printStackTrace();
         }
